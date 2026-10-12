@@ -1,6 +1,6 @@
 # FirstFan — Autonomous Build Status
 
-_Last updated: 2026-10-13 00:35 IST. Deadline: 2026-10-14 09:29 IST (portal)._
+_Last updated: 2026-10-13 00:45 IST. Deadline: 2026-10-14 09:29 IST (portal)._
 
 ## Objective
 Monad Metropolis 2026, track **Social, Attention & Culture**. FirstFan: on-chain early-supporter platform —
@@ -52,6 +52,6 @@ cd web && npm run dev     # local: run `npx hardhat node` + deploy/seed to local
 ```
 
 ## Next actions (priority)
-1. README, project graphic (logo/og PNG), demo + pitch scripts.
+1. DONE: README, assets/ graphics, docs/ demo + pitch scripts + submission checklist. Mobile check OK.
 2. On funding: deploy → seed → set web env → verify on Monadscan → e2e script against testnet.
 3. On Vercel access: deploy, set env vars, verify `/api/health`.
