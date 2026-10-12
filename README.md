@@ -10,9 +10,9 @@ Built for **Monad Metropolis 2026 — Social, Attention & Culture**.
 
 | | |
 |---|---|
-| Live app | _added after deployment_ |
+| Live app | **https://firstfan-pink.vercel.app** |
 | Network | Monad Testnet (chain ID `10143`) |
-| Contract | _added after deployment_ (see [Deployments](#deployments)) |
+| Contract | [`0xbd94cA0133E3dE9f57eD5111A6f48b901B6a5Aa8`](https://testnet.monadscan.com/address/0xbd94cA0133E3dE9f57eD5111A6f48b901B6a5Aa8) |
 | Explorer | https://testnet.monadscan.com |
 
 > Testnet MON has no monetary value. FirstFan does not promise returns, profit sharing or financial rewards —
@@ -150,7 +150,28 @@ Accounts badged **Demo account** were created and funded by the FirstFan team so
 Their transactions are real on-chain transactions, but they are not real community members or traction.
 
 ## Deployments
-_Filled in only after verified deployment._
+Verified on Monad Testnet (chain `10143`). The deployed runtime bytecode matches the compiled artifact.
+
+| What | Value |
+|---|---|
+| FirstFan contract | [`0xbd94cA0133E3dE9f57eD5111A6f48b901B6a5Aa8`](https://testnet.monadscan.com/address/0xbd94cA0133E3dE9f57eD5111A6f48b901B6a5Aa8) |
+| Deploy transaction | [`0x3ba3c69e…cd1a6`](https://testnet.monadscan.com/tx/0x3ba3c69e07c5d1d984a23a033b500bcd9142689295f76fcde2019651cb0cd1a6) (block 70479257) |
+| Deployer | `0x0260FB0941B15d53fE955B548f47EE481c3ef458` |
+| Web app | https://firstfan-pink.vercel.app (status: [/api/health](https://firstfan-pink.vercel.app/api/health)) |
+
+Demo accounts (seeded and funded by the FirstFan team, badged "Demo account" in the app — `contracts/deployments/monadTestnet.demo.json`):
+
+| Role | Address |
+|---|---|
+| Creator `maya_frames` | `0x75c7aF48872c4E374a13358f7DBF5c70Be0c5D0f` |
+| Creator `noor_loops` | `0xfeD08516e3a30b3BA5B614FFBA876A278eb9935A` |
+| Creator `arjun_draws` | `0xAd50d4da3038F535098ae8580b2b74055d7749C5` |
+| Fan | `0x0295844F50202a9A805208b331855e5d97f6C2f9` |
+| Fan | `0x48bb472D9Af8FF5c53F023048ACAA7C76B4827FF` |
+| Team UI test wallet | `0x6301bb6B5c8FD25FBa9AD69D47743103b72E96DF` |
+
+Example real UI transaction (support → fan #3 of `maya_frames`):
+[`0xbbf06dac…20e8aa`](https://testnet.monadscan.com/tx/0xbbf06dac51e4d1481ef0701a4062994e657c5e460215b93a0bcc5c35d220e8aa).
 
 ## Roadmap
 - Campus pilot: onboard 10 photographers/illustrators from the founder's campus photography community.

@@ -298,7 +298,7 @@ function Earnings({ creator, account }: { creator: Creator; account: Address }) 
     <div className="card p-5">
       <div className="text-xs uppercase tracking-widest text-ink-muted">Available to withdraw</div>
       <div className="mt-1 font-display text-5xl">{mon(creator.balance)} <span className="text-2xl text-ink-muted">MON</span></div>
-      <p className="mt-1 text-sm text-ink-muted">{mon(creator.totalRaised)} MON raised from {creator.supporterCount} supporters across {creator.supportCount} supports.</p>
+      <p className="mt-1 text-sm text-ink-muted">{mon(creator.totalRaised)} MON raised from {creator.supporterCount} supporter{creator.supporterCount === 1 ? "" : "s"} across {creator.supportCount} support{creator.supportCount === 1 ? "" : "s"}.</p>
       <button className="btn-primary mt-4 w-full" disabled={busy || creator.balance === 0n} onClick={() => send({ functionName: "withdraw", args: [account] })}>
         {busy && <Spinner />} Withdraw to my wallet
       </button>

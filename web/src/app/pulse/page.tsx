@@ -118,9 +118,9 @@ export default function PulsePage() {
                           <Avatar src={c?.avatarURI} name={c?.name} seed={t.creator} size={32} />
                           <div className="min-w-0 flex-1">
                             <div className="truncate font-semibold">{c?.name ?? shortAddr(t.creator)}</div>
-                            <div className="text-xs text-ink-muted">{t.supports7d} supports this week</div>
+                            <div className="text-xs text-ink-muted">{t.supports7d} support{t.supports7d === 1 ? "" : "s"} this week</div>
                           </div>
-                          <span className="chip bg-mint-soft text-mint">+{t.newSupporters7d} fans</span>
+                          <span className="chip bg-mint-soft text-mint">+{t.newSupporters7d} fan{t.newSupporters7d === 1 ? "" : "s"}</span>
                         </Link>
                       </li>
                     );
