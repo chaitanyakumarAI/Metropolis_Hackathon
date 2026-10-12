@@ -11,17 +11,21 @@ async function main() {
   console.log(`Network ${hre.network.name} (chain ${chainId})`);
   console.log(`Deployer ${deployer.account.address} balance ${formatEther(balance)} MON`);
 
-  const { contract, deploymentTransaction } = await hre.viem.sendDeploymentTransaction("FirstFan");
-  console.log(`Deploy tx ${deploymentTransaction.hash}`);
-  const receipt = await publicClient.waitForTransactionReceipt({ hash: deploymentTransaction.hash });
-  if (receipt.status !== "success") throw new Error("Deployment reverted");
-  console.log(`FirstFan deployed at ${contract.address} in block ${receipt.blockNumber}`);
+  // Send the raw deployment and poll for the receipt; public RPCs can briefly lag
+  // behind the node that accepted the transaction.
+  const artifact = await hre.artifacts.readArtifact("FirstFan");
+  const hash = await deployer.deployContract({ abi: artifact.abi, bytecode: artifact.bytecode as `0x${string}` });
+  console.log(`Deploy tx ${hash}`);
+  const receipt = await publicClient.waitForTransactionReceipt({ hash, retryCount: 30, pollingInterval: 1_000 });
+  if (receipt.status !== "success" || !receipt.contractAddress) throw new Error("Deployment reverted");
+  const address = receipt.contractAddress;
+  console.log(`FirstFan deployed at ${address} in block ${receipt.blockNumber}`);
 
   const out = {
     network: hre.network.name,
     chainId,
-    address: contract.address,
-    deployTx: deploymentTransaction.hash,
+    address,
+    deployTx: hash,
     blockNumber: Number(receipt.blockNumber),
     deployer: deployer.account.address,
     deployedAt: new Date().toISOString(),

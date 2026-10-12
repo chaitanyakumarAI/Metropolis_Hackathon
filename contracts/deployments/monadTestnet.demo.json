@@ -1,0 +1,20 @@
+{
+  "creators": [
+    {
+      "handle": "maya_frames",
+      "address": "0x75c7aF48872c4E374a13358f7DBF5c70Be0c5D0f"
+    },
+    {
+      "handle": "noor_loops",
+      "address": "0xfeD08516e3a30b3BA5B614FFBA876A278eb9935A"
+    },
+    {
+      "handle": "arjun_draws",
+      "address": "0xAd50d4da3038F535098ae8580b2b74055d7749C5"
+    }
+  ],
+  "fans": [
+    "0x0295844F50202a9A805208b331855e5d97f6C2f9",
+    "0x48bb472D9Af8FF5c53F023048ACAA7C76B4827FF"
+  ]
+}

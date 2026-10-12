@@ -1,0 +1,9 @@
+{
+  "network": "monadTestnet",
+  "chainId": 10143,
+  "address": "0xbd94cA0133E3dE9f57eD5111A6f48b901B6a5Aa8",
+  "deployTx": "0x3ba3c69e07c5d1d984a23a033b500bcd9142689295f76fcde2019651cb0cd1a6",
+  "blockNumber": 70479257,
+  "deployer": "0x0260FB0941B15d53fE955B548f47EE481c3ef458",
+  "deployedAt": "2026-10-12T19:20:10.503Z"
+}

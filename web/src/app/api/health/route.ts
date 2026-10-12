@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { chain, CONTRACT_ADDRESS } from "@/lib/config";
 import { envioConfigured } from "@/lib/pulse";
-import { rpcProvider, serverClient } from "@/lib/server";
+import { alchemyStatus, serverClient, serverRpcUrls } from "@/lib/server";
 
 export const dynamic = "force-dynamic";
 
@@ -11,7 +11,8 @@ export async function GET() {
   const started = Date.now();
   try {
     const client = serverClient();
-    const [chainId, blockNumber, code] = await Promise.all([
+    const [alchemy, chainId, blockNumber, code] = await Promise.all([
+      alchemyStatus(),
       client.getChainId(),
       client.getBlockNumber(),
       CONTRACT_ADDRESS ? client.getCode({ address: CONTRACT_ADDRESS }) : Promise.resolve(undefined),
@@ -21,7 +22,8 @@ export async function GET() {
       chainId,
       expectedChainId: chain.id,
       blockNumber: blockNumber.toString(),
-      rpcProvider: rpcProvider(),
+      rpcProvider: alchemy === "ok" ? "alchemy" : serverRpcUrls().at(-1)!.name,
+      alchemy,
       contract: CONTRACT_ADDRESS || null,
       contractDeployed: !!code && code !== "0x",
       sealConfigured: !!process.env.SEAL_SECRET,
@@ -30,7 +32,7 @@ export async function GET() {
     });
   } catch (err) {
     return NextResponse.json(
-      { ok: false, rpcProvider: rpcProvider(), error: err instanceof Error ? err.message.slice(0, 200) : "error" },
+      { ok: false, error: err instanceof Error ? err.message.slice(0, 200) : "error" },
       { status: 502 },
     );
   }
