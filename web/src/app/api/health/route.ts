@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { chain, CONTRACT_ADDRESS } from "@/lib/config";
+import { envioConfigured } from "@/lib/pulse";
 import { rpcProvider, serverClient } from "@/lib/server";
 
 export const dynamic = "force-dynamic";
@@ -24,6 +25,7 @@ export async function GET() {
       contract: CONTRACT_ADDRESS || null,
       contractDeployed: !!code && code !== "0x",
       sealConfigured: !!process.env.SEAL_SECRET,
+      envioHyperSync: envioConfigured(),
       latencyMs: Date.now() - started,
     });
   } catch (err) {

@@ -12,6 +12,7 @@ export function Header() {
   const links = [
     { href: "/", label: "Discover" },
     { href: "/creators", label: "Creators" },
+    { href: "/pulse", label: "Pulse" },
     { href: address ? `/fan/${address}` : "/passport", label: "Passport" },
     { href: "/studio", label: "Studio" },
     { href: "/how-it-works", label: "How it works" },
