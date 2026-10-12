@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { isAddress, type Address } from "viem";
 import { useAccount } from "wagmi";
-import { Avatar, DemoBadge, Empty, ErrorNote, ExternalIcon, FoundingBadge, Skeleton, StarIcon } from "@/components/ui";
+import { TierChip } from "@/components/TierChip";
+import { Avatar, DemoBadge, Empty, ErrorNote, ExternalIcon, FoundingBadge, Skeleton } from "@/components/ui";
 import { chain, explorerAddress } from "@/lib/config";
 import { fullDate, mon, ordinal } from "@/lib/format";
 import { useCreatorMap, usePassport } from "@/lib/hooks";
@@ -93,7 +94,7 @@ export default function PassportPage() {
                   <p className="mt-0.5 text-xs text-ink-muted">Since {fullDate(e.record.firstSupportAt)}</p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {e.founding && <FoundingBadge />}
-                    {e.tier > 0 && <span className="chip bg-accent-soft text-accent-dark"><StarIcon className="h-3 w-3" /> Tier {e.tier}</span>}
+                    <TierChip creator={e.creator} tier={e.tier} />
                   </div>
                 </div>
               </Link>

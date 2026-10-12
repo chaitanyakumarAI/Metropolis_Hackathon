@@ -1,6 +1,6 @@
 # Technical demo — script (target 2:45, hard limit 3:00)
 
-Record the **live deployed app** on Monad Testnet (not localhost, not slides). Screen + voice.
+Record the **live deployed app** (https://firstfan-pink.vercel.app) on Monad Testnet (not localhost, not slides). Screen + voice.
 Before recording: wallet A (fan) funded with ~0.1 testnet MON and *not yet a supporter* of Maya;
 wallet B (creator) funded with ~0.3 MON. Browser zoom 100%, 1440px wide. Have Monadscan open in a tab.
 

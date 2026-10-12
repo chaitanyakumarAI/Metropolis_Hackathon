@@ -150,7 +150,8 @@ Accounts badged **Demo account** were created and funded by the FirstFan team so
 Their transactions are real on-chain transactions, but they are not real community members or traction.
 
 ## Deployments
-Verified on Monad Testnet (chain `10143`). The deployed runtime bytecode matches the compiled artifact.
+Verified on Monad Testnet (chain `10143`). The deployed runtime bytecode matches the compiled artifact, and the source is
+**verified on Sourcify (full match)**: [https://testnet.monadvision.com/contracts/full_match/10143/0xbd94cA0133E3dE9f57eD5111A6f48b901B6a5Aa8/](https://testnet.monadvision.com/contracts/full_match/10143/0xbd94cA0133E3dE9f57eD5111A6f48b901B6a5Aa8/).
 
 | What | Value |
 |---|---|

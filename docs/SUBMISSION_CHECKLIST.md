@@ -1,19 +1,20 @@
 # Submission checklist — Monad Metropolis 2026 (Social, Attention & Culture)
 
-Deadline shown on portal: **14 Oct 2026, 09:29 IST**. Status legend: ✅ done & verified · 🟡 ready, needs your action · ⬜ not done.
+Deadline shown on portal: **14 Oct 2026, 09:29 IST**. Legend: ✅ done & verified · 🟡 needs your action · ⬜ not done.
 
 ## Portal fields
-| Item | Status | Notes |
+| Item | Status | Value / notes |
 |---|---|---|
-| Project name: FirstFan | 🟡 | |
-| Description | 🟡 | Use the text below |
-| Logo/graphic (JPG/PNG/WEBP ≤ 3 MB) | ✅ file ready | `assets/logo.png` (1024², 36 KB) or `assets/firstfan-cover.png` (1600×900, 0.3 MB) |
-| Public GitHub repo, accessible to `metropolis@hackathon.monad.xyz` | ⬜ | Create repo, push, share access |
-| Technical demo video ≤ 3 min (YouTube/Loom/Vimeo) | ⬜ | Script: `docs/DEMO_SCRIPT.md` — must show live product |
+| Project name | 🟡 paste | FirstFan |
+| Description | 🟡 paste | Text below |
+| Logo/graphic (≤ 3 MB) | ✅ ready | `assets/logo.png` (1024², 36 KB) or `assets/firstfan-cover.png` (1600×900, 0.3 MB) |
+| Public GitHub repo | ✅ | https://github.com/chaitanyakumarAI/Metropolis_Hackathon (public, so `metropolis@hackathon.monad.xyz` can access it) |
+| Live product link | ✅ | https://firstfan-pink.vercel.app |
+| Contract address | ✅ | `0xbd94cA0133E3dE9f57eD5111A6f48b901B6a5Aa8` (Monad Testnet, source verified on Sourcify) |
+| Technical demo video ≤ 3 min | ⬜ | Script: `docs/DEMO_SCRIPT.md` — must show the live product |
 | Pitch video ≤ 2 min | ⬜ | Script: `docs/PITCH_SCRIPT.md` |
-| Live product link on Monad Testnet + access instructions | ⬜ | Deploy pending (funding + hosting) |
-| Bounty: Envio — Best Use of Envio | 🟡 | Needs `ENVIO_API_TOKEN` set in hosting and shown in demo |
-| Bounty: Alchemy — Best Projects using Alchemy | 🟡 | Needs `ALCHEMY_API_KEY` set in hosting; show `/api/health` |
+| Bounty: Envio — Best Use of Envio | ✅ integration live / 🟡 select in portal | Pulse page shows "Indexed by Envio HyperSync"; show it in the demo |
+| Bounty: Alchemy — Best Projects using Alchemy | 🟡 | **Enable Monad Testnet on your Alchemy app first**, then confirm https://firstfan-pink.vercel.app/api/health shows `"rpcProvider":"alchemy"`; show it in the demo |
 | Optional 30s ad | ⬜ | Lowest priority |
 
 ## Description (portal)
@@ -23,7 +24,18 @@ contributions and enable transparent rewards, exclusive access, and community pa
 creators build communities that share in the value they create.
 
 ## Judge access instructions (paste into portal)
-No login needed to browse. To transact: install MetaMask or Rabby, connect, accept the switch to Monad Testnet
-(chain 10143), and get free testnet MON at https://faucet.monad.xyz. Support any creator, then press Unlock on a
-gated post and vote in the creator's poll. Your record is at /passport. Creator tools are under Studio (use a second
-wallet). Accounts labelled "Demo account" were seeded by our team. Testnet MON has no monetary value.
+Live app: https://firstfan-pink.vercel.app — no login needed to browse. To transact: install MetaMask or Rabby,
+connect, accept the switch to Monad Testnet (chain 10143), and get free testnet MON at https://faucet.monad.xyz.
+Support any creator (min 0.001 MON), then press Unlock on a gated post and vote in the creator's poll. Your record
+is at /passport. Creator tools are under Studio (use a second wallet). Accounts labelled "Demo account" were seeded
+by our team. Testnet MON has no monetary value. Contract: 0xbd94cA0133E3dE9f57eD5111A6f48b901B6a5Aa8 (source
+verified on Sourcify).
+
+## Bounty notes (paste if the portal asks how you used the sponsor)
+- **Envio:** Our Pulse page (earliest-believer leaderboard, creators gaining fans this week, daily activity and the
+  full tx-linked support history) is computed server-side from a full Envio HyperSync scan of FirstFan's `Supported`
+  events on Monad Testnet (`10143.hypersync.xyz`), joined with transaction hashes and block timestamps.
+  Code: `web/src/lib/pulse.ts`.
+- **Alchemy:** All server-side chain reads (unlock eligibility checks, sealing checks, health, analytics fallback)
+  and all browser reads (through our `/api/rpc` proxy, which keeps the key secret) use Alchemy's Monad Testnet RPC,
+  with automatic fallback to the public RPC. Code: `web/src/lib/server.ts`, `web/src/app/api/rpc/route.ts`.

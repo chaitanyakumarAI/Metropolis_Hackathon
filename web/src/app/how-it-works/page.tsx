@@ -81,6 +81,14 @@ export default function HowItWorks() {
             "not configured"
           )}
         </p>
+        {CONTRACT_ADDRESS && (
+          <p className="text-ink-soft">
+            Source code:{" "}
+            <a className="text-accent" href={`https://testnet.monadvision.com/contracts/full_match/${chain.id}/${CONTRACT_ADDRESS}/`} target="_blank" rel="noreferrer">
+              verified on Sourcify (full match)
+            </a>
+          </p>
+        )}
         <p className="text-ink-soft">
           Useful reads: <code>getSupporter(creator, fan)</code>, <code>canAccess(creator, fan, access)</code>, <code>getFanPassport(fan)</code>,{" "}
           <code>getCreatorSupports(creator, 0, 25)</code>. Events: <code>Supported</code>, <code>PostPublished</code>, <code>Voted</code>, <code>Withdrawn</code>.

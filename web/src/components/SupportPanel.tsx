@@ -76,6 +76,16 @@ export function SupportPanel({ creator, tiers }: { creator: Creator; tiers: read
           </p>
           <div className="mt-3 flex items-center gap-3">
             <TxLink hash={state.status === "success" ? state.hash : undefined} label="See proof on explorer" />
+            <a
+              className="text-xs font-semibold text-paper/70 hover:text-paper"
+              target="_blank"
+              rel="noreferrer"
+              href={`https://x.com/intent/post?text=${encodeURIComponent(
+                `I'm fan #${confirmed.rank} of ${creator.name} on FirstFan${confirmed.rank <= creator.foundingSlots ? " — a founding fan" : ""}. Recorded on Monad.`,
+              )}&url=${encodeURIComponent(typeof window !== "undefined" ? `${window.location.origin}/c/${creator.handle}` : "")}`}
+            >
+              Share
+            </a>
             <button className="text-xs font-semibold text-paper/70 hover:text-paper" onClick={reset}>
               Support again
             </button>
