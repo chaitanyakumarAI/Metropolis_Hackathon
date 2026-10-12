@@ -98,7 +98,7 @@ export function ActivityList({
                     <Link href={`/c/${c.handle}`} className="font-semibold hover:text-accent">{c.name}</Link>
                   ) : showCreator ? "a creator" : null}{" "}
                   with <b>{mon(e.amount)} MON</b>
-                  {e.rank === 1 && <span className="text-gold-ink"> · first fan ever</span>}
+                  {e.rank === 1 && <span className="text-gold-ink"> · their first fan</span>}
                 </p>
                 {e.note && <p className="mt-1 text-ink-soft">&ldquo;{e.note}&rdquo;</p>}
                 <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink-muted">

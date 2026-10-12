@@ -33,7 +33,7 @@ export default function CreatorPage() {
   const activity = useCreatorSupports(creator?.account);
   const polls = useCreatorPolls(creator?.account);
   const { data: me } = useSupporter(creator?.account, address);
-  const { unlock, unlocking } = useUnlock();
+  const { unlock, unlocking, results } = useUnlock();
   const [tab, setTab] = useState<Tab>("work");
 
   if (isLoading) {
@@ -56,10 +56,14 @@ export default function CreatorPage() {
   const cover = posts.data?.find((p) => p.access === 0 && p.imageURI)?.imageURI;
   const foundingLeft = Math.max(0, creator.foundingSlots - creator.supporterCount);
   const isOwner = !!address && address.toLowerCase() === creator.account.toLowerCase();
-  const gatedIds = (posts.data ?? []).filter((p) => p.access !== 0).map((p) => p.id);
-  const eligibleCount = (posts.data ?? []).filter(
-    (p) => p.access !== 0 && (isOwner || (me && (p.access === 255 ? me.founding : me.tier >= p.access))),
-  ).length;
+  const lockedEligible = (posts.data ?? []).filter(
+    (p) =>
+      p.access !== 0 &&
+      !results[p.id.toString()]?.ok &&
+      (isOwner || (me && (p.access === 255 ? me.founding : me.tier >= p.access))),
+  );
+  const eligibleCount = lockedEligible.length;
+  const gatedIds = lockedEligible.map((p) => p.id);
 
   return (
     <div className="space-y-8">
@@ -72,9 +76,11 @@ export default function CreatorPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
         </div>
         <div className="px-5 pb-6 sm:px-8">
-          <div className="-mt-12 flex flex-wrap items-end gap-4">
+          <div className="relative z-10 -mt-12">
             <Avatar src={creator.avatarURI} name={creator.name} seed={creator.account} size={96} className="ring-4" />
-            <div className="min-w-0 pb-1">
+          </div>
+          <div className="mt-3 flex flex-wrap items-start gap-4">
+            <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
                 <h1 className="font-display text-4xl leading-none sm:text-5xl">{creator.name}</h1>
                 <DemoBadge address={creator.account} />
@@ -88,8 +94,12 @@ export default function CreatorPage() {
                 )}
               </div>
             </div>
-            {isOwner && (
+            {isOwner ? (
               <Link href="/studio" className="btn-ghost ml-auto">Open studio</Link>
+            ) : (
+              <a href="#support" className="btn-accent ml-auto">
+                {foundingLeft > 0 ? `Claim fan #${creator.supporterCount + 1}` : "Support"}
+              </a>
             )}
           </div>
           {creator.bio && <p className="mt-4 max-w-2xl text-ink-soft">{creator.bio}</p>}
@@ -127,7 +137,7 @@ export default function CreatorPage() {
               ["community", `Supporters (${creator.supporterCount})`],
               ["activity", "Activity"],
             ] as [Tab, string][]).map(([t, label]) => (
-              <button key={t} onClick={() => setTab(t)} className={`flex-1 rounded-full px-4 py-1.5 ${tab === t ? "bg-ink text-paper" : "text-ink-soft"}`}>
+              <button key={t} onClick={() => setTab(t)} className={`flex-1 whitespace-nowrap rounded-full px-3 py-1.5 sm:px-4 ${tab === t ? "bg-ink text-paper" : "text-ink-soft"}`}>
                 {label}
               </button>
             ))}

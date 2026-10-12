@@ -47,7 +47,7 @@ export function useCreatorByHandle(handle?: string) {
     const [creator, tiers] = await c.readContract({ ...ff, functionName: "getCreatorByHandle", args: [handle!] });
     if (creator.createdAt === 0n) return null;
     return { creator: creator as Creator, tiers: tiers as readonly Tier[] };
-  }, { enabled: !!handle });
+  }, { enabled: !!handle, refetchInterval: 15_000 });
 }
 
 export function useCreatorByAddress(address?: Address) {
@@ -55,7 +55,7 @@ export function useCreatorByAddress(address?: Address) {
     const [creator, tiers] = await c.readContract({ ...ff, functionName: "getCreator", args: [address!] });
     if (creator.createdAt === 0n) return null;
     return { creator: creator as Creator, tiers: tiers as readonly Tier[] };
-  }, { enabled: !!address });
+  }, { enabled: !!address, refetchInterval: 15_000 });
 }
 
 export function useRecentPosts(limit = 60) {
@@ -91,14 +91,14 @@ export type SupporterView = { supporter: Address; record: SupporterRecord; tier:
 export function useSupporters(creator?: Address) {
   return useChainQuery(["supporters", creator], async (c) => {
     return (await c.readContract({ ...ff, functionName: "getSupporters", args: [creator!, 0n, 200n] })) as readonly SupporterView[];
-  }, { enabled: !!creator });
+  }, { enabled: !!creator, refetchInterval: 15_000 });
 }
 
 export function useSupporter(creator?: Address, fan?: Address) {
   return useChainQuery(["supporter", creator, fan], async (c) => {
     const [record, tier, founding] = await c.readContract({ ...ff, functionName: "getSupporter", args: [creator!, fan!] });
     return { record: record as SupporterRecord, tier: Number(tier), founding };
-  }, { enabled: !!creator && !!fan && fan !== ZERO });
+  }, { enabled: !!creator && !!fan && fan !== ZERO, refetchInterval: 15_000 });
 }
 
 export type PassportEntry = { creator: Address; record: SupporterRecord; tier: number; founding: boolean };
@@ -112,7 +112,7 @@ export function usePassport(fan?: Address) {
 export function useCreatorPolls(creator?: Address) {
   return useChainQuery(["polls", creator], async (c) => {
     return (await c.readContract({ ...ff, functionName: "getCreatorPolls", args: [creator!] })) as readonly Poll[];
-  }, { enabled: !!creator });
+  }, { enabled: !!creator, refetchInterval: 15_000 });
 }
 
 export function useMyVotes(pollIds: bigint[], voter?: Address) {
