@@ -6,7 +6,7 @@ _Last updated: 2026-10-13 ~01:30 IST. Deadline: 2026-10-14 09:29 IST (portal)._
 Monad Metropolis 2026, track **Social, Attention & Culture**. FirstFan: on-chain early-supporter platform —
 fans support emerging creators on Monad, get a permanent rank (fan #1, #2…), creator-defined tiers unlock
 exclusive posts (server-enforced against contract state) and supporter-only polls (contract-enforced).
-Bounties: Envio (HyperSync powers Pulse — **verified live**), Alchemy (RPC with fallback — **blocked: network not enabled on the user's Alchemy app**).
+Bounties: Envio (HyperSync powers Pulse — **verified live**), Alchemy (RPC — **verified live**: /api/health rpcProvider "alchemy").
 
 ## Live
 - App: https://firstfan-pink.vercel.app (Vercel project `firstfan`, account `chaitanyakumarai`, deployed via CLI from `web/`)
@@ -33,8 +33,8 @@ NEXT_PUBLIC_REPO_URL, SEAL_SECRET, ALCHEMY_API_KEY, ENVIO_API_TOKEN, MONAD_RPC_U
 Gotcha: write env files with LF endings (CRLF leaked `\r` into Vercel values once; fixed).
 
 ## Remaining (user actions)
-1. Enable **Monad Testnet** on the Alchemy app (dashboard → app → Networks). No redeploy needed;
-   `/api/health` should then show `"rpcProvider":"alchemy"`.
+1. DONE: Alchemy key from app "Chaitanya Kumar's first app" (Monad Testnet enabled) set on Vercel; verified.
+
 2. Record technical demo (≤3 min) and pitch (≤2 min) — scripts in `docs/`. Upload to YouTube/Loom.
 3. Fill the portal (text in `docs/SUBMISSION_CHECKLIST.md`), select Envio + Alchemy bounties, upload `assets/logo.png`, submit.
 

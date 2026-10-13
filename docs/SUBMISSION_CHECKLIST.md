@@ -14,7 +14,7 @@ Deadline shown on portal: **14 Oct 2026, 09:29 IST**. Legend: ✅ done & verifie
 | Technical demo video ≤ 3 min | ⬜ | Script: `docs/DEMO_SCRIPT.md` — must show the live product |
 | Pitch video ≤ 2 min | ⬜ | Script: `docs/PITCH_SCRIPT.md` |
 | Bounty: Envio — Best Use of Envio | ✅ integration live / 🟡 select in portal | Pulse page shows "Indexed by Envio HyperSync"; show it in the demo |
-| Bounty: Alchemy — Best Projects using Alchemy | 🟡 | **Enable Monad Testnet on your Alchemy app first**, then confirm https://firstfan-pink.vercel.app/api/health shows `"rpcProvider":"alchemy"`; show it in the demo |
+| Bounty: Alchemy — Best Projects using Alchemy | ✅ integration live / 🟡 select in portal | https://firstfan-pink.vercel.app/api/health shows `"rpcProvider":"alchemy"`; show it in the demo |
 | Optional 30s ad | ⬜ | Lowest priority |
 
 ## Description (portal)
